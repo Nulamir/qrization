@@ -1,7 +1,7 @@
 package com.nulamir.qrization.domain
 
-class DeleteSwagItemUseCase {
+class DeleteSwagItemUseCase (private val swagListRepository: SwagListRepository) {
     fun deleteSwagItem(swagItem: SwagItem ){
-        TODO()
+        swagListRepository.deleteSwagItem(swagItem)
     }
 }

@@ -1,7 +1,7 @@
 package com.nulamir.qrization.domain
 
-class EditSwagItemUseCase {
+class EditSwagItemUseCase (private val swagListRepository: SwagListRepository) {
     fun editSwagItem (swagItem: SwagItem) {
-        TODO()
+        swagListRepository.editSwagItem(swagItem)
     }
 }

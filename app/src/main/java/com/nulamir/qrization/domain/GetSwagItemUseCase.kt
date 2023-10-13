@@ -1,7 +1,7 @@
 package com.nulamir.qrization.domain
 
-class GetSwagItemUseCase {
+class GetSwagItemUseCase(private val swagListRepository: SwagListRepository) {
     fun getSwagItem(swagItemId: Int): SwagItem{
-        TODO()
+        return swagListRepository.getSwagItem(swagItemId)
     }
 }
