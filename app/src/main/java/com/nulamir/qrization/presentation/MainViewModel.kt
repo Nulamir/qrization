@@ -1,10 +1,12 @@
 package com.nulamir.qrization.presentation
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nulamir.qrization.data.SwagListRepositoryImpl
 import com.nulamir.qrization.domain.DeleteSwagItemUseCase
 import com.nulamir.qrization.domain.EditSwagItemUseCase
 import com.nulamir.qrization.domain.GetSwagListUseCase
+import com.nulamir.qrization.domain.SwagItem
 
 class MainViewModel : ViewModel() {
 
@@ -14,4 +16,17 @@ class MainViewModel : ViewModel() {
     private val deleteSwagItemUseCase = DeleteSwagItemUseCase(repository)
     private val editSwagItemUseCase = EditSwagItemUseCase(repository)
 
+     val swagList= getSwagListUseCase.getSwagList()
+
+    fun deleteSwagItem(swagItem: SwagItem){
+        deleteSwagItemUseCase.deleteSwagItem(swagItem)
+
+    }
+
+    fun changeRealLocation(swagItem: SwagItem, realLocation : String = "201"){
+
+        val newItem = swagItem.copy(realLocation = realLocation)
+        editSwagItemUseCase.editSwagItem(newItem)
+
+    }
 }
