@@ -16,7 +16,7 @@ object SwagListRepositoryImpl : SwagListRepository {
 
     init {
         for (i in 0 until 10) {
-            val item = SwagItem("Name", i.toString(), "MC", "2023" , "IT" , "202" , "")
+            val item = SwagItem("Name", i.toString(), "MC", "2023" , "IT" , "202" )
             addSwagItem(item)
         }
     }

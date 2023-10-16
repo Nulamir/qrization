@@ -2,6 +2,9 @@ package com.nulamir.qrization.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,38 +14,42 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.LayoutInflaterCompat
 import androidx.lifecycle.ViewModelProvider
+import com.nulamir.qrization.R
+import com.nulamir.qrization.domain.SwagItem
 import com.nulamir.qrization.ui.theme.QrizationTheme
 
 class MainActivity : ComponentActivity() {
 
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var llShopList: LinearLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      //  setContentView(R.layout.)
+        setContentView(R.layout.activity_main)
+        llShopList = findViewById(R.id.ll_swag_list)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.swagList.observe(this){
-            Log.d("MainActivityTest" , it.toString())
+            showList(it)
         }
-
-
-
-        setContent {
-            QrizationTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    //color = MaterialTheme.colorScheme.background
-                    color = Color.Cyan
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
-
     }
+    private fun showList(list: List<SwagItem> ) {
+        for(swagItem in list){
+            val layoutId = R.layout.item_shop_enabled
+            val view = LayoutInflater.from(this).inflate(layoutId,llShopList,false)
+            val tvName = view.findViewById<TextView>(R.id.tv_name)
+            val tvAccountNumber = view.findViewById<TextView>(R.id.tv_account_number)
+            tvName.text = swagItem.name
+            tvAccountNumber.text = swagItem.accountNumber
+
+            llShopList.addView(view)
+        }
+    }
+
+
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

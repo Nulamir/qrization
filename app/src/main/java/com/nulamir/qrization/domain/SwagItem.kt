@@ -4,7 +4,7 @@ data class SwagItem (
 
     val name: String,
     val accountNumber: String,
-    val accountType: String,
+ //   val accountType: String,
     val inventoryData: String,
     val unit: String,
     val accountLocation: String,
