@@ -39,9 +39,16 @@ class MainActivity : ComponentActivity() {
             val layoutId = R.layout.item_shop_enabled
             val view = LayoutInflater.from(this).inflate(layoutId,llShopList,false)
             val tvName = view.findViewById<TextView>(R.id.tv_name)
-            val tvAccountNumber = view.findViewById<TextView>(R.id.tv_account_number)
             tvName.text = swagItem.name
+            val tvAccountNumber = view.findViewById<TextView>(R.id.tv_account_number)
             tvAccountNumber.text = swagItem.accountNumber
+            val tvAccountLocation = view.findViewById<TextView>(R.id.tv_account_location)
+            tvAccountLocation.text = swagItem.accountLocation
+            val tvRealLocation = view.findViewById<TextView>(R.id.tv_real_location)
+            tvRealLocation.text = swagItem.realLocation
+            val tvUnit = view.findViewById<TextView>(R.id.tv_unit)
+            tvUnit.text = swagItem.unit
+
 
             llShopList.addView(view)
         }

@@ -5,10 +5,10 @@ data class SwagItem (
     val name: String,
     val accountNumber: String,
  //   val accountType: String,
-    val inventoryData: String,
-    val unit: String,
+ //   val inventoryData: String,
     val accountLocation: String,
     var realLocation : String,
+    val unit: String,
     var id: Int = UDEFINED_ID
 )
 

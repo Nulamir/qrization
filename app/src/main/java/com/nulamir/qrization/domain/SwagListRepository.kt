@@ -9,5 +9,6 @@ interface SwagListRepository {
     fun editSwagItem (swagItem: SwagItem)
     fun getSwagList(): LiveData<List<SwagItem>>
     fun getSwagItem(swagItemId: Int): SwagItem
+    fun readSwagListFromExcel()
 
 }
