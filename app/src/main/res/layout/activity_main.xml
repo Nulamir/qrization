@@ -7,22 +7,48 @@
     android:background="@color/brown"
     tools:context=".presentation.MainActivity">
 
-    <ScrollView
+
+    <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        >
+        android:orientation="vertical">
+
 
         <LinearLayout
-            android:id="@+id/ll_swag_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <!--Button: Create folder-->
+            <com.google.android.material.button.MaterialButton
+            android:id="@+id/read_swag_list_from_excel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:text="read list from excel"/>
+
+        </LinearLayout>
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_swag_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
