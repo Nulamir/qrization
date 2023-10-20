@@ -1,6 +1,7 @@
 package com.nulamir.qrization.data
 
 import android.os.Environment
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nulamir.qrization.domain.SwagItem
@@ -67,26 +68,37 @@ object SwagListRepositoryImpl : SwagListRepository {
 
     override fun readSwagListFromExcel() {
 
-        fun getVAlueFromFormula(cell: Cell): String {
+        fun getVAlueFromFormula(cell: Cell?): String {
+            var retString : String = ""
 
-           when (cell.getCellType()) {
-                CellType.BOOLEAN -> return cell.booleanCellValue.toString()
-                CellType.STRING -> return cell.stringCellValue.toString()
-                CellType.NUMERIC -> if (DateUtil.isCellDateFormatted(cell)) {
-                    return cell.dateCellValue.toString()
-                } else {
-                    if (cell.numericCellValue is Double) {
-                        return String.format("%.0f", cell.numericCellValue)
+            if (cell == null) {return ""}
+
+            try {
+                when (cell.getCellType()) {
+                    CellType.BOOLEAN -> retString = cell.booleanCellValue.toString()
+                    CellType.STRING -> retString = cell.stringCellValue.toString()
+                    CellType.NUMERIC -> if (DateUtil.isCellDateFormatted(cell)) {
+                        retString = cell.dateCellValue.toString()
                     } else {
-                        return "type error"
+                        if (cell.numericCellValue is Double) {
+                            retString = String.format("%.0f", cell.numericCellValue)
+                        } else {
+                            retString = "type error"
+                        }
                     }
+
+                    CellType.FORMULA -> {
+                        //evaluator.evaluateFormulaCell(cell)
+                        retString = cell.stringCellValue.toString()
+                    }
+
+                    else -> return ""
                 }
-                CellType.FORMULA -> {
-                    //evaluator.evaluateFormulaCell(cell)
-                    return cell.stringCellValue
-                }
-                else -> return ""
+
+            } catch (exception: Exception){
+                Log.d("typeSearch", exception.message.toString())
             }
+            return retString
         }
 
 
@@ -120,7 +132,14 @@ object SwagListRepositoryImpl : SwagListRepository {
             while (i<= xlRows){
                 //println(xlWs.getRow(i).getCell(4))
                 //Log.d("myTag", xlWs.getRow(i).getCell(4).toString());
-                val item = SwagItem(getVAlueFromFormula(xlWs.getRow(i).getCell(3)), getVAlueFromFormula(xlWs.getRow(i).getCell(1)) , getVAlueFromFormula( xlWs.getRow(i).getCell(5)), "" , "IT"  )
+                val cell6 = xlWs.getRow(i).getCell(6)
+                val item = SwagItem(getVAlueFromFormula(xlWs.getRow(i).getCell(3)),
+                    getVAlueFromFormula(xlWs.getRow(i).getCell(1)) ,
+                    getVAlueFromFormula( xlWs.getRow(i).getCell(5)),
+                    getVAlueFromFormula( xlWs.getRow(i).getCell(6)),
+                    getVAlueFromFormula( xlWs.getRow(i).getCell(7)),
+                    getVAlueFromFormula( xlWs.getRow(i).getCell(8)),
+                    getVAlueFromFormula( xlWs.getRow(i).getCell(9)))
                 addSwagItem(item)
                 i++
             }

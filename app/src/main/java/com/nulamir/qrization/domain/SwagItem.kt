@@ -8,8 +8,11 @@ data class SwagItem (
  //   val inventoryData: String,
     val accountLocation: String,
     var realLocation : String,
+    val comment: String,
     val unit: String,
-    var id: Int = UDEFINED_ID
+    val enabled: String,
+    var id: Int = UDEFINED_ID,
+
 )
 
 {

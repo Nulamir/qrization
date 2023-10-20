@@ -77,6 +77,16 @@
                 android:textStyle="normal"
                 tools:text="Монитор HP TFT Z23i (23) LED AH-IPS Monitor (250 cd/m2,1000:1,8 ms,178/178,VGA,DVI-D,DisplayPort,US" />
 
+            <TextView
+                android:id="@+id/tv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:textColor="@color/purple_200"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="test" />
+
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"

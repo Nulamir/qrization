@@ -92,6 +92,8 @@ class MainActivity : ComponentActivity() {
             tvAccountLocation.text = swagItem.accountLocation
             val tvRealLocation = view.findViewById<TextView>(R.id.tv_real_location)
             tvRealLocation.text = swagItem.realLocation
+            val tvComment = view.findViewById<TextView>(R.id.tv_comment)
+            tvComment.text = swagItem.comment
             val tvUnit = view.findViewById<TextView>(R.id.tv_unit)
             tvUnit.text = swagItem.unit
 
