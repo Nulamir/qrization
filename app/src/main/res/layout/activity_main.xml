@@ -8,11 +8,12 @@
     tools:context=".presentation.MainActivity">
 
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_shop_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +22,7 @@
         tools:listitem="@layout/item_shop_enabled" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:visibility="gone"
-        android:id="@+id/button_add_shop_item"
+        android:id="@+id/read_swag_list_from_excel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -33,50 +33,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add" />
-
-
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal">
-            <!--Button: Create folder-->
-            <com.google.android.material.button.MaterialButton
-            android:id="@+id/read_swag_list_from_excel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="read list from excel"/>
-
-        </LinearLayout>
-        <ScrollView
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp"
-            >
-
-            <LinearLayout
-                android:id="@+id/ll_swag_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
