@@ -10,6 +10,7 @@ import android.os.Environment
 import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -94,6 +95,9 @@ class MainActivity : ComponentActivity() {
             tvRealLocation.text = swagItem.realLocation
             val tvComment = view.findViewById<TextView>(R.id.tv_comment)
             tvComment.text = swagItem.comment
+            if (swagItem.comment.isEmpty()) {
+                tvComment.visibility = View.GONE
+            }
             val tvUnit = view.findViewById<TextView>(R.id.tv_unit)
             tvUnit.text = swagItem.unit
 
